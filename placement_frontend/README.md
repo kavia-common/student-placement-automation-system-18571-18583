@@ -1,82 +1,40 @@
-# Lightweight React Template for KAVIA
+# Placement Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Elegant, responsive frontend for Student Placement Automation System following the Ocean Professional style guide.
 
 ## Features
-
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Student and Staff authentication (sign in and registration)
+- Student profile management with validation and document uploads (modal)
+- Staff dashboard to define criteria and view filtered/shortlisted students (by department)
+- Vertical sidebar layout, gradient header, reusable components (FormField, Modal, Sidebar, ProtectedRoute)
+- Centralized API service with HTTP requests to placement_backend
+- Ocean Professional theme using soft pastels, gradients, rounded components
 
 ## Getting Started
+1) Install dependencies:
+   npm install
 
-In the project directory, you can run:
+2) Configure environment variables:
+   cp .env.example .env
+   # Set REACT_APP_API_BASE_URL to your backend URL
 
-### `npm start`
+3) Run the app:
+   npm start
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Environment
+- REACT_APP_API_BASE_URL: Base URL of placement_backend
+- REACT_APP_SITE_URL: Public site URL for email redirects (if needed)
 
-### `npm test`
+## Code Structure
+- src/styles/theme.css: Global theme and components
+- src/services/api.js: API client and endpoint stubs
+- src/context/AuthContext.js: Auth state provider
+- src/components/: Reusable UI components
+- src/pages/auth/: Auth pages (SignIn, RegisterStudent, RegisterStaff)
+- src/pages/student/: StudentDashboard with profile and uploads
+- src/pages/staff/: StaffDashboard with criteria and lists
 
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Integration Notes
+- Replace endpoint paths in src/services/api.js with backend routes.
+- Token-based auth uses Authorization: Bearer <token>.
+- For file uploads, FormData is used with multipart/form-data.
